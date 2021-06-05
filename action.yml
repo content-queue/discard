@@ -1,4 +1,4 @@
-name: 'Content-Queue Discord'
+name: 'Content-Queue Discard'
 description: 'Remove issues from your project'
 inputs:
   project:
