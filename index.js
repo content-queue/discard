@@ -7,8 +7,8 @@ const core = require('@actions/core'),
     token = core.getInput('token'),
     octokit = github.getOctokit(token);
 
-if(!github.context.issue) {
-    core.info('Not running after an issue was closed.');
+if(!github.context.payload.issue) {
+    core.info('Not running after an issue was changed.');
     return;
 }
 
@@ -36,7 +36,7 @@ async function doStuff() {
     }
     forEachCard(boardId, async (card) => {
         const issueId = /\/(?:issue|pull-request)s\/(\d+)$/.exec(card.content_url);
-        if(issueId?.[1] == github.context.issue.number) {
+        if(issueId?.[1] == github.context.payload.issue.number) {
             await octokit.projects.deleteCard({ card_id: card.id });
         }
     }, ignoredColumns);
