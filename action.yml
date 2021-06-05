@@ -1,0 +1,14 @@
+name: 'Content-Queue Discord'
+description: 'Remove issues from your project'
+inputs:
+  project:
+    description: 'Project to act on'
+    required: true
+  token:
+    description: 'GitHub token'
+    required: true
+  ignoredColumns:
+    description: 'Columns to ignore (comma separated)'
+runs:
+  using: 'node12'
+  main: 'index.js'
