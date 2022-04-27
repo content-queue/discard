@@ -42,4 +42,7 @@ async function doStuff() {
     }, ignoredColumns);
 }
 
-doStuff().catch((error) => core.setFailed(error.message));
+doStuff().catch((error) => {
+    console.error(error);
+    core.setFailed(error.message);
+});
